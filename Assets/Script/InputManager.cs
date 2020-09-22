@@ -6,9 +6,9 @@ public class InputManager : MonoBehaviour
 {
   
     [SerializeField]
-    private float moveTime = 0.3f;
-    private bool isMove = false;
-    private Vector2 moveDirection = Vector2.right;
+    private float mTime = 0.3f;
+    private bool moving = false;
+    private Vector2 moveDir = Vector2.right;
     public AudioSource walkingEffect;
 
 
@@ -24,9 +24,9 @@ public class InputManager : MonoBehaviour
 
 
 
-    public bool MoveTo(Vector3 moveDir)
+    public bool Heading(Vector3 moveDir)
     {
-        if (isMove)
+        if (moving)
         {
             return false;
         }
@@ -37,46 +37,46 @@ public class InputManager : MonoBehaviour
     {
         Vector2 StartPos = transform.position;
         float percent = 0;
-        isMove = true;
-        while (percent < moveTime)
+        moving = true;
+        while (percent < mTime)
         {
             percent += Time.deltaTime;
-            transform.position = Vector2.Lerp(StartPos, endPos, percent / moveTime);
+            transform.position = Vector2.Lerp(StartPos, endPos, percent / mTime);
           
             yield return null;
 
 
         }
-        isMove = false;
+        moving = false;
 
     }
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            moveDirection = Vector2.up;
+            moveDir = Vector2.up;
         }
         else if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            moveDirection = Vector2.down;
+            moveDir = Vector2.down;
 
         }
         else if (Input.GetKeyDown(KeyCode.RightArrow))
         {
 
-            moveDirection = Vector2.right;
+            moveDir = Vector2.right;
 
         }
         else if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
 
-            moveDirection = Vector2.left;
+            moveDir = Vector2.left;
 
         }
         if (Input.anyKeyDown)
         {
 
-            MoveTo(moveDirection);
+            Heading(moveDir);
             walkingEffect.Play();
         }
 

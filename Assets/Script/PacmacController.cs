@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PacmacController : MonoBehaviour
 {
-
+    /*
     private Vector2 Heading = Vector2.right;
     private InputManager inputManager;
     public AudioSource walkingEffect;
@@ -47,12 +47,12 @@ public class PacmacController : MonoBehaviour
             Heading = Vector2.left;
 
         }
-        /*RaycastHit2D hit = Physics2D.Raycast(transform.position, rayDis, mapLay);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, rayDis, mapLay);
         if (hit.transform == null)
         { 
-          */  
+          
         }
-       
+       */
 
 
     }
